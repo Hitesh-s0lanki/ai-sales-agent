@@ -1,3 +1,4 @@
+import { CallStatusEnum } from '@prisma/client'
 import { Sparkle, Webcam, Home, Users, Settings } from 'lucide-react'
 export const sidebarData = [
     {
@@ -39,50 +40,50 @@ export const onBoardingSteps = [
     { id: 3, title: 'Conversion status', complete: false, link: '' },
 ]
 
-// export const potentialCustomer = [
-//   {
-//     id: '1',
-//     name: 'John Doe',
-//     email: 'Johndoe@gmail.com',
-//     clerkId: '1',
-//     profileImage: '/vercel.svg',
-//     isActive: true,
-//     lastLoginAt: null,
-//     createdAt: new Date(),
-//     updatedAt: new Date(),
-//     deletedAt: null,
-//     tags: ['New', 'Hot Lead'],
-//     callStatus: CallStatusEnum.COMPLETED,
-//   },
-//   {
-//     id: '2',
-//     name: 'John Doe',
-//     email: 'Johndoe@gmail.com',
-//     clerkId: '2',
-//     profileImage: '/vercel.svg',
-//     isActive: true,
-//     lastLoginAt: null,
-//     createdAt: new Date(),
-//     updatedAt: new Date(),
-//     deletedAt: null,
-//     tags: ['New', 'Hot Lead'],
-//     callStatus: CallStatusEnum.COMPLETED,
-//   },
-//   {
-//     id: '3',
-//     name: 'John Doe',
-//     email: 'Johndoe@gmail.com',
-//     clerkId: '3',
-//     profileImage: '/vercel.svg',
-//     isActive: true,
-//     lastLoginAt: null,
-//     createdAt: new Date(),
-//     updatedAt: new Date(),
-//     deletedAt: null,
-//     tags: ['New', 'Hot Lead'],
-//     callStatus: CallStatusEnum.COMPLETED,
-//   },
-// ]
+export const potentialCustomer = [
+    {
+        id: '1',
+        name: 'John Doe',
+        email: 'Johndoe@gmail.com',
+        clerkId: '1',
+        profileImage: '/vercel.svg',
+        isActive: true,
+        lastLoginAt: null,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        deletedAt: null,
+        tags: ['New', 'Hot Lead'],
+        callStatus: CallStatusEnum.COMPLETED,
+    },
+    {
+        id: '2',
+        name: 'John Doe',
+        email: 'Johndoe@gmail.com',
+        clerkId: '2',
+        profileImage: '/vercel.svg',
+        isActive: true,
+        lastLoginAt: null,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        deletedAt: null,
+        tags: ['New', 'Hot Lead'],
+        callStatus: CallStatusEnum.COMPLETED,
+    },
+    {
+        id: '3',
+        name: 'John Doe',
+        email: 'Johndoe@gmail.com',
+        clerkId: '3',
+        profileImage: '/vercel.svg',
+        isActive: true,
+        lastLoginAt: null,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        deletedAt: null,
+        tags: ['New', 'Hot Lead'],
+        callStatus: CallStatusEnum.COMPLETED,
+    },
+]
 
 export const subscriptionPriceId = `price_1RLtR0Fj9oKEERu1zShQbtgG`
 
