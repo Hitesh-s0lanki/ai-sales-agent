@@ -1,44 +1,42 @@
 "use client";
-import { usePathname } from "next/navigation";
-import React from "react";
-import { sidebarData } from "@/lib/data";
-import Link from "next/link";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { sidebarData } from "@/lib/data";
 import { UserButton } from "@clerk/nextjs";
-import { Sparkles } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="w-28 lg:w-20 h-screen sticky top-0 py-10 px-2 sm:px-4 border bg-[#111827] border-border flex flex-col items-center justify-start gap-10 ">
-      <Sparkles className="size-8 text-white" strokeWidth={1.8} />
+    <div className="w-18 sm:w-24 h-screen sticky top-0 py-10 px-2 sm:px-6 border   bg-background border-border flex flex-col items-center justify-start gap-10">
+      <div className="">
+        <Image src={"/clerk.png"} alt="logo" height={30} width={30} />
+      </div>
+      {/* Sidebar Menu */}
       <div className="w-full h-full justify-between items-center flex flex-col">
-        <div className="w-full h-fit flex flex-col gap-4 items-center justify-center">
+        <div className="w-full h-fit flex flex-col gap-4 items-center justify-center ">
           {sidebarData.map((item) => (
             <TooltipProvider key={item.id}>
               <Tooltip>
-                <TooltipTrigger asChild>
+                <TooltipTrigger>
                   <Link
                     href={item.link}
-                    className={`flex items-center gap-2 cursor-pointer rounded-lg p-2 hover:bg-white/10 ${
-                      pathname.includes(item.link) ? "bg-white/10" : ""
-                    }`}>
+                    className={`flex items-center gap-2 cursor-pointer rounded-lg p-2 
+                    ${pathname.includes(item.link) ? "bg-black/20" : ""}`}>
                     <item.icon
-                      className={` size-6 text-white ${
-                        pathname.includes(item.link) ? "" : "opacity-80"
-                      }`}
+                      className={`size-6 ${pathname.includes(item.link) ? "" : "opacity-80"}`}
                     />
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent
-                  side="right"
-                  className="bg-white text-black border">
+                <TooltipContent side="right">
                   <span className="text-sm">{item.title}</span>
                 </TooltipContent>
               </Tooltip>

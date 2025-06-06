@@ -1,19 +1,25 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
+import CreateWebinarButton from "../ReusableComponent/CreateWebinar";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
-import { useRouter, usePathname } from "next/navigation";
-import React from "react";
-import { Zap } from "lucide-react";
+import { ArrowLeft, Zap } from "lucide-react";
+import { AiAgents, User } from "@prisma/client";
+import Stripe from "stripe";
 import PurpleIcon from "./purple-icon";
 
-const Header = () => {
+type Props = {
+  assistants: AiAgents[] | [];
+  user: User;
+  stripeProducts: Stripe.Product[] | [];
+};
+
+const Header = ({ assistants, stripeProducts }: Props) => {
   const pathname = usePathname();
   const router = useRouter();
-
   return (
-    <div className="w-full px-6 md:px-8 lg:px-10 xl:px-12 pt-10 sticky top-0 z-10 flex justify-between items-center flex-wrap gap-4 bg-background">
-      {pathname.includes("pipeline") ? (
+    <div className="w-full p-4 sticky top-5 z-10 flex justify-between items-center flex-wrap gap-4 border shadow-sm border-border backdrop-blur-2xl rounded-full">
+      {pathname?.includes("pipeline") ? (
         <Button
           className="bg-primary/10 border border-border rounded-xl"
           variant={"outline"}
@@ -25,11 +31,15 @@ const Header = () => {
           {pathname.split("/")[1]}
         </div>
       )}
-      <div className="flex gap-6 items-center flex-wrap">
+
+      <div className="flex gap-4 items-center flex-wrap">
         <PurpleIcon>
           <Zap className="w-4 h-4 text-white" strokeWidth={2} />
         </PurpleIcon>
-        {/* <CreateWebinarButton/> */}
+        <CreateWebinarButton
+          assistants={assistants}
+          stripeProducts={stripeProducts}
+        />
       </div>
     </div>
   );

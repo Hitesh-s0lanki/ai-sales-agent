@@ -1,3 +1,5 @@
+// This is your improved Prisma schema file
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -36,19 +38,20 @@ enum CallStatusEnum {
 }
 
 model User {
-  id               String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name             String    @db.VarChar(100)
-  clerkId          String    @unique
-  email            String    @unique
+  id               String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name             String     @db.VarChar(100)
+  clerkId          String     @unique
+  email            String     @unique
   profileImage     String
-  webinars         Webinar[] @relation("PresenterWebinars")
-  stripeConnectId  String?   @db.VarChar(255)
+  webinars         Webinar[]  @relation("PresenterWebinars")
+  stripeConnectId  String?    @db.VarChar(255)
   lastLoginAt      DateTime?
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
   deletedAt        DateTime?
-  subscription     Boolean   @default(false)
-  stripeCustomerId String?   @db.VarChar(255)
+  subscription     Boolean    @default(false)
+  stripeCustomerId String?    @db.VarChar(255)
+  aiAgents         AiAgents[]
 
   @@index([email])
   @@index([clerkId])
@@ -117,4 +120,18 @@ model Attendance {
   @@unique([attendeeId, webinarId]) // ✅ This enforces 1 attendee per webinar
   @@index([webinarId])
   @@index([attendedType])
+}
+
+model AiAgents {
+  id          String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String  @db.VarChar(100)
+  firstMessage String  @db.Text
+  prompt     String  @db.Text
+  model      String  @db.VarChar(50)
+  provider   String  @db.VarChar(50)
+  userId    String   @db.Uuid
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  User User[]
 }
