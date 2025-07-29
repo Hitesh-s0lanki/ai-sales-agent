@@ -52,7 +52,7 @@
     "resend": "^4.5.1",
     "sonner": "^2.0.3",
     "stream-chat": "^8.60.0",
-    "stream-chat-react": "^12.14.0",
+    "stream-chat-react": "^13.3.0",
     "stripe": "^17.7.0",
     "tailwind-merge": "^3.0.2",
     "tw-animate-css": "^1.2.4",
